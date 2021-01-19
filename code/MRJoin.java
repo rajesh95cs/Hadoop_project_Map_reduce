@@ -39,24 +39,24 @@ public class MRJoin
 		{
 			String value = "";
 			double total = 0.0;
-			int count = 0;
+			//int count = 0;
 			/* Here is where the logic of the JOIN/ reduction is laid out where the 
 			datasets are join according to its key-value pair her the keys will the 
 			country,year and the value will be the one which is pertaining to its 
 			country and year*/
 			for (Text t: values)
-			{	System.out.println("the Value of t "+t);
+			{	//System.out.println("the Value of t "+t);
 				String parts[] = t.toString().split(" ");
 				if(parts[0].equals("AVERAGE_NO_PEOPLE"))
 				{
-					total += Float.parseFloat(parts[1]); 
+					no_of_people += Float.parseFloat(parts[1]); 
 				}
 				else if(parts[0].equals("MORTALITY_RATE"))
 				{
 					value = parts[1]; 
 				}
 			}
-			String str = String.format("%s %.2f",key,total);
+			String str = String.format("%s %.2f",key,no_of_people);
 			context.write(new Text(str), new Text(value));
 		}
 	}
